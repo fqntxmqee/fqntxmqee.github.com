@@ -30,7 +30,7 @@ h2. 绑定独立域名
 在godaddy中注册 "fqntx.me":http://fqntx.me 域名，.me专用于博客类型，但比.com贵一些，且没有优惠
 
 # 注册完域名后，在域名管理中增加A record并指向207.97.227.245
-# 在你的github项目下增加CNAME文件，内容为你的域名，如 "http://github.com/saberma/saberma.github.com/blob/master/CNAME":http://github.com/saberma/saberma.github.com/blob/master/CNAME
+# 在你的github项目下增加CNAME文件，内容为你的域名，如 "http://github.com/fqntxmqee/fqntxmqee.github.com/blob/master/CNAME":http://github.com/fqntxmqee/fqntxmqee.github.com/blob/master/CNAME
 
 具体参考 "http://pages.github.com":http://pages.github.com 中 @Custom Domains@ 部分的内容
 
