@@ -11,15 +11,6 @@ bq.
 依赖于git，文章原生支持版本控制(对比)，更有利于知识库类文章
 可以使用vim编写文章，写的时候像在写代码，更符合程序员的习惯
 
-本博客此次除了启用全新个人域名saberma.me，将做以下调整
-
-bq. 
-美化网站风格，更加的清新:)
-页面布局调整为html5、css3架构
-文章可按分类显示
-代码增加高亮显示
-增加rss feed输出
-
 h2. 挑个新的博客模板
 
 要求是基于html5、css3的免费模板，google之，发现个好地方: "http://freehtml5templates.com":http://freehtml5templates.com

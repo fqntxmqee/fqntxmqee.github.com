@@ -1,31 +1,33 @@
 ---
 author: fqntxmqee
-desc: 分享技术
+desc: 为名忙，为利忙，忙里偷闲，且喝两杯闲茶去！
 ---
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
+<head>
+	<meta charset="utf-8" />
     {% if page.title != null %}
     <title>{{page.title}} | {{ page.desc }} - {{ page.author }}</title>
     {% else %}
     <title>{{ page.desc }} - {{ page.author }}</title>
     {% endif %}
-    <link rel="stylesheet" href="/stylesheets/default.css" type="text/css" media="screen" charset="utf-8"/>
     <link rel="stylesheet" href="/stylesheets/styles.css" type="text/css" media="screen" charset="utf-8"/>
-    <link rel="stylesheet" href="/stylesheets/syntax.css" type="text/css" media="screen" charset="utf-8"/>
     <link rel="stylesheet" href="/stylesheets/print.css" type="text/css" media="print" charset="utf-8"/>
+    <script type="text/javascript" src="/syntaxhighlighter/scripts/shCore.js"></script>
+	<script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+	<link type="text/css" rel="stylesheet" href="/syntaxhighlighter/styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
     <!--[if IE]><script src="/javascripts/html5.js"></script><![endif]-->
-  </head>
-  <body>
-    <div id="wrapper"><!-- #wrapper -->
-
-      <header><!-- header -->
+</head>
+<body>
+<div id="wrapper"><!-- #wrapper -->
+	<header><!-- header -->
       <h1><a href="/">{{ page.author }}</a></h1>
       <h2><a href="/">{{ page.desc }}</a></h2>
-      </header><!-- end of header -->
-
-      <nav><!-- top nav -->
+      <img src="/images/headerimg.jpg" width="940" height="200" alt="勇往直前"><!-- header image -->
+    </header><!-- end of header -->
+	
+	<nav><!-- top nav -->
       <div class="menu">
         <ul>
           <li><a href="/">首页</a></li>
@@ -33,87 +35,89 @@ desc: 分享技术
           <li><a href="/about.html">关于我</a></li>
         </ul>
       </div>
-      </nav><!-- end of top nav -->
+    </nav><!-- end of top nav -->
+	
+	<section id="main"><!-- #main content and sidebar area -->
+			<section id="content"><!-- #content -->
+				<article class="articlecontent">
+		          {{ content }}
+		        </article>
+			</section><!-- end of #content -->
 
-      <section id="main"><!-- #main content and sidebar area -->
-      <div id="content">
-        <article class="articlecontent">
-          {{ content }}
-        </article>
-      </div>
+		<aside id="sidebar"><!-- sidebar -->
+				<section>
+			      <h3>Who's fqntxmqee</h3>
+			      <img src="/images/fqntxmqee.jpg"/>
+			      <p>email:<a href="mailto:fqntxmqee@hotmail.com">fqntxmqee@hotmail.com</a></p>
+			 
+			        <a href="http://github.com/fqntxmqee">github</a>
+			      </p>
+			      </section>
 
-      <aside>
-      <section>
-      <h3>Who's fqntxmqee</h3>
-      <img src="/images/fqntxmqee.jpg"/>
-      <p>email:<a href="mailto:fqntxmqee@hotmail.com">fqntxmqee@hotmail.com</a></p>
- 
-        <a href="http://github.com/fqntxmqee">github</a>
-      </p>
-      </section>
+					<section>
+				      <h3>Categories</h3>
+				      <ul>
+				        {% for category in site.categories %}
+				        <li><a href="/{{category | first}}.html">{{category | first}} ({{category | last | size }})</a></li>
+				        {% endfor %}
+				      </ul>
+				    </section>
+				    
+				    <section>
+				      <div id="github-badge">
+				      </div>
+				     </section>
+				      <script type="text/javascript" charset="utf-8">
+				      GITHUB_USERNAME = "fqntxmqee";
+				      </script>
+				      <script src="http://drnicjavascript.rubyforge.org/github_badge/dist/github-badge-launcher.js" type="text/javascript"></script>
+		</aside><!-- end of sidebar -->
 
+	</section><!-- end of #main content and sidebar-->
+	
+		<footer>
+		<section id="footer-area">
 
-      <section>
-      <h3>Categories</h3>
-      <ul>
-        {% for category in site.categories %}
-        <li><a href="/{{category | first}}.html">{{category | first}} ({{category | last | size }})</a></li>
-        {% endfor %}
-      </ul>
-      </section>
+			<section id="footer-outer-block">
+					<aside class="footer-segment">
+							<h4>Friends</h4>
+								<ul>
+									<li><a href="#">one linkylink</a></li>
+									<li><a href="#">two linkylinks</a></li>
+									<li><a href="#">three linkylinks</a></li>
+								</ul>
+					</aside><!-- end of #first footer segment -->
 
+					<aside class="footer-segment">
+							<h4>Awesome Stuff</h4>
+								<ul>
+									<li><a href="#">one linkylink</a></li>
+									<li><a href="#">two linkylinks</a></li>
+									<li><a href="#">three linkylinks</a></li>
+								</ul>
+					</aside><!-- end of #second footer segment -->
 
-      <section>
-      <div id="github-badge">
-      </div>
-      </section>
-      <script type="text/javascript" charset="utf-8">
-      GITHUB_USERNAME = "fqntxmqee";
-      </script>
-      <script src="http://drnicjavascript.rubyforge.org/github_badge/dist/github-badge-launcher.js" type="text/javascript"></script>
+					<aside class="footer-segment">
+							<h4>Coolness</h4>
+								<ul>
+									<li><a href="#">one linkylink</a></li>
+									<li><a href="#">two linkylinks</a></li>
+									<li><a href="#">three linkylinks</a></li>
+								</ul>
+					</aside><!-- end of #third footer segment -->
+					
+					<aside class="footer-segment">
+							<h4>Blahdyblah</h4>
+								<p>&copy; 2010 <a href="#">yoursite.com</a> Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+					</aside><!-- end of #fourth footer segment -->
 
-      </aside>
+			</section><!-- end of footer-outer-block -->
 
-      </section><!-- end of #main content and sidebar-->
-
-      <footer>
-      <section id="footer-area">
-
-      <section id="footer-outer-block">
-      <aside class="footer-segment">
-      <h4>Friends</h4>
-      <ul>
-
-      </ul>
-      </aside><!-- end of #first footer segment -->
-
-      <aside class="footer-segment">
-      <h4>Blogroll</h4>
-      <ul>
-
-      </ul>
-      </aside><!-- end of #second footer segment -->
-
-      <aside class="footer-segment">
-      <h4>Coolness</h4>
-      <ul>
-
-      </ul>
-      </aside><!-- end of #third footer segment -->
-
-      <aside class="footer-segment">
-      <h4>Encourage</h4>
-      <p>尝试. 坚持. 分享. 宽容.</p>
-      </aside><!-- end of #fourth footer segment -->
-
-      </section><!-- end of footer-outer-block -->
-
-      </section><!-- end of footer-area -->
-      </footer>
-
-    </div><!-- #wrapper -->
-    <a href="http://github.com/fqntxmqee"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-    <!-- Free template created by http://freehtml5templates.com -->
-  </body>
+		</section><!-- end of footer-area -->
+	</footer>
+	
+</div><!-- #wrapper -->
+<a href="http://github.com/fqntxmqee"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<!-- Free template created by http://freehtml5templates.com -->
+</body>
 </html>
