@@ -98,7 +98,7 @@ h2. 整合评论
 
 由于github page最终生成的都是静态html页面，所以是没有评论功能呢
 但我们利用disqus实现在线评论功能，先到 "http://disqus.com":http://disqus.com 注册帐号(免费)
-注册成功后，为简单起见，只要把 @_includes/post.html@ 中的saberma替换为你的注册帐号就行了(disqus_url输入你实际的域名)
+注册成功后，为简单起见，只要把 @_includes/post.html@ 中的fqntxmqee替换为你的注册帐号就行了(disqus_url输入你实际的域名)
 
 h2. 整合rss订阅
 
