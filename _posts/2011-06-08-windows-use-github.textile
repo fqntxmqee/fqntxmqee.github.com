@@ -1,0 +1,51 @@
+---
+layout: post
+title: windows系统下使用github
+category: other
+---
+注册 GitHub用户，记住注册用的email：“username@email.com”。
+
+h2. 生成密钥对
+
+下载安装 Git for Windows（选择下载类似于 Git-1.7.*-preview.exe 的文件）。
+
+打开安装好的 Git Bash，依次输入：
+
+bq. 
+git config --global user.name "your username" 
+git config --global user.email username@email.com 请确保 name 和 email 信息与在 GitHub 注册时的信息相符。
+
+创建一个 SSH Public Keys，输入：
+<pre>
+ssh-keygen -t rsa -C "username@email.com" 
+</pre>
+回车后，显示如下内容：
+<pre>
+Generating public/private rsa key pair. Enter file in which to save the key (/c/Users/你的windows登录用户名（Administrator）/.ssh/id_rsa): Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in /c/Users/你的windows登录用户名（Administrator）/.ssh/id_rsa. Your public key has been saved in /c/Users/你的windows登录用户名（Administrator）/.ssh/id_rsa.pub. The key fingerprint is: e8:ae:60:8f:38:c2:98:1d:6d:84:60:8c:9e:dd:47:81 username@email.com
+</pre>
+
+h2. 为github添加SSH Public Keys
+
+# 找到“c：/Users/你的windows登录用户名（Administrator）/.ssh/”目录下的“id_rsa.pub”文件，用记事本或其他文本编辑器软件打开，复制所有内容。
+# 登录github，点击“Account Settings”链接，然后点击“SSH Public Keys”，点击“Add another public key”，在弹出的对话框中的Key文本域中粘贴刚才复制的key，点击“Add key”进行保存。
+
+h2. Clone repositories
+
+# 测试是否能连接GitHub
+输入命令：
+<pre>
+#ssh git@github.com
+</pre>
+如果配置正确，显示：
+<pre>
+ERROR: Hi xxx! You've successfully authenticated, but GitHub does not provide shell access
+Connection to github.com closed.
+</pre>
+# 从远程仓库clone
+
+输入命令：
+
+<pre>
+git clone git@github.com:您的github用户名/您的仓库名
+</pre>
+

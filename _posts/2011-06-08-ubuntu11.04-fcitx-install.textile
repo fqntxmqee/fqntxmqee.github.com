@@ -1,0 +1,47 @@
+---
+layout: post
+title: Ubuntu 11.04系统安装fcitx4.0.1
+category: linux
+---
+Fcitx──小企鹅输入法
+
+bq. 
+Free Chinese Input Toy for X是一个以GPL方式发布的、基于XIM的简体中文输入法集合（原为G五笔），包括五笔、五笔拼音、二笔、仓颉、晚风、冰蟾全息、拼音(全拼和双拼)、区位以及码表输入模块。 Fcitx是非常轻巧的输入法，但是原作者于2007年夏终止了该项目据传其导火索缘于有 编程高手 质疑其代码风格。 很快便传出有人接手了其项目,目前Fcitx仍在开发中。 
+
+h2. fcitx安装
+
+请打开终端，并执行以下命令：
+
+为了防止scim与fcitx冲突，如果你安装了scim，你最好卸载掉scim（有一次我的fcitx莫名其妙无法上屏，卸载掉就正常了）：
+<pre>
+sudo apt-get purge scim
+sudo add-apt-repository ppa:wengxt/fcitx-nightly #最新的版本都不需要
+sudo apt-get update
+sudo apt-get install fcitx fcitx-config-gtk fcitx-sunpinyin
+sudo apt-get install fcitx-table-all #同时安装其他码表
+im-switch -s fcitx -z default  #设为默认输入法，一般不需要，除非系统有多个输入法
+</pre>
+
+
+h2. fcitx配置
+
+# 先确认是否删除scim*输入法，fcitx是否安装成功。
+# 如果1已成功，不知道你系统语言是英文还是中文，语言如果是英文设置在英文locate下启动fcitx输入法，在/etc/X11/xinit/xinput.d/下新建一个文件en_US
+文件内容:
+<pre>
+XMODIFIERS="@im=fcitx"
+XIM=fcitx
+XIM_PROGRAM=/usr/bin/fcitx
+XIM_ARGS=""
+GTK_IM_MODULE=XIM
+QT_IM_MODULE=XIM
+DEPENDS="fcitx"
+</pre>
+# 如果是中文环境，编辑/usr/lib/gtk-2.0/2.10.0/immodule-files.d/libgtk2.0-0.immodules
+<pre>
+找到"xim" "X Input Method" "gtk20" "/usr/share/locale" "ko:ja:th:zh"
+改成"xim" "X Input Method" "gtk20" "/usr/share/locale" "en:ko:ja:th:zh"
+</pre>
+如果系统环境是中文，对应的改下语言就可以了
+重启x window
+
