@@ -1,0 +1,76 @@
+---
+layout: post
+title: Maven2 安装、配置
+category: maven
+---
+在安装Maven 之前，首先要确认你已经正确安装了JDK。Maven 可以运行在JDK 1.4及以上的版本上。不过本书的所有样例都基于JDK 5 及以上版本。打开windows 的命令行（Windows 键+R，然后输入cmd，回车），运行如下的命令来检查你的Java 安装：
+
+bq. 
+Microsoft Windows [版本 6.1.7600]
+版权所有 (c) 2009 Microsoft Corporation。保留所有权利。
+C:\Users\Administrator>echo %%JAVA_HOME%%
+E:\develop\Java\jdk1.6.0_18
+C:\Users\Administrator>java -version
+java version "1.6.0_18"
+Java(TM) SE Runtime Environment (build 1.6.0_18-b07)
+Java HotSpot(TM) Client VM (build 16.0-b13, mixed mode, sharing)
+
+首先我们检查环境变量JAVA_HOME 是否指向了正确的JDK 目录，接着尝试运行java命令。如果Windows 无法执行java 命令，或者无法找到JAVA_HOME 环境变量。你就需要检查Java 是否安装了，或者环境变量是否设置正确。
+
+h2. Maven2 安装
+
+打开浏览器，访问Maven 的下载页面：http://maven.apache.org/download.html。你会看到各种版本Maven 的各种格式的下载链接。例如：apache-maven-2.1.0-bin.zip。
+
+在规划好的目录文件夹中解压maven压缩包（apache-maven-2.1.0-bin.zip）：
+
+bq. 
+E:\develop>jar xvf "E:\apache-maven-2.1.0-bin.zip"
+
+这里我们的Maven 安装目录是E:\develop\apache-maven-2.1.0，接着我们需要设置环境变量，将Maven 安装配置到操作系统环境中。
+
+使用Windows 键+Pause 键调出系统信息面板，点击高级系统设置，再点击环境变量，在系统变量中新建一个变量，变量名为M2_HOME，变量值为我们的Maven 安装目录，这里是E:\develop\apache-maven-2.1.0。点击确定，接着我们在系统变量中找到一个名为Path 的变量，在其变量值的末尾加上%M2_HOME%\bin;，注意多个值之间需要有分号隔开。点击确定，至此，环境变量设置完成，详细情况如下图所示：
+!/images/article/maven/use-maven-1.jpg!
+
+这里需要提一下的是Path 环境变量，当我们在cmd 中输入命令的时候，Windows 首先会在当前目录寻找可执行文件或脚本，如果没有找到，Windows 会接着遍历环境变量Path中定义的路径。由于我们将%M2_HOME%\bin 添加到了Path 中，而这里%M2_HOME%实际上是引用了我们前面定义的另一个变量，其值是Maven 安装目录，因此，Windows 会在执行命令的时候搜索目录E:\develop\apache-maven-2.1.0\bin，而mvn 执行脚本的位置就是这里。
+
+明白了环境变量的作用，现在打开一个新的cmd 窗口（这里强调新的窗口是因为新的环境变量配置需要新的cmd 窗口才能生效），运行如下命令检查Maven 安装：
+
+bq. 
+E:\develop>echo %%M2_HOME%%
+E:\develop\apache-maven-2.1.0
+E:\develop>mvn -version
+Apache Maven 2.1.0 (r755702; 2009-03-19 03:10:27+0800)
+Java version: 1.6.0_18
+Java home: E:\develop\Java\jdk1.6.0_18\jre
+Default locale: zh_CN, platform encoding: GBK
+OS name: "windows 7" version: "6.1" arch: "x86" Family: "windows"
+
+
+第一条命令echo %M2_HOME%用来检查环境变量M2_HOME 是否指向了正确的Maven安装目录。而mvn –version执行了我们第一条Maven命令，以检查Windows 是否能够找到正确的mvn执行脚本。
+
+h2. Maven2 配置使用
+
+h3. Setting.xml配置
+
+打开E:\develop\apache-maven-2.1.0\conf目录下的settings.xml文件，修改后（任意仓库目录位置）如下图：
+!/images/article/maven/use-maven-2.jpg!
+
+h3. m2eclipse安装、配置
+
+启动Eclipse（3.4+版本）之后，在菜单栏中选择Help，然后选择Install New Software…，接着你会看到一个Install 对话框，在Work with:字段中输入http://m2eclipse.sonatype.org/update/，然后点击Add，然后你会得到一个新的Add Site 对话框，在Name 字段中输入m2eclipse，点击OK。Eclipse 会下载m2eclipse 安装站点上的资源信息。等待资源载入完成之后，我们再将其全部展开，就能看到如下的界面：
+!/images/article/maven/use-maven-3.jpg!
+
+选择安装模块，然后点击Next >，Eclipse 会自动计算模块间依赖，然后给出一个将被安装的模块列表，确认无误后，继续点击Next >，这个时候我们会看到许可证信息，m2eclipse 使用的开源许可证是Eclipse Public License v1.0，选择I accept the terms of the license agreements，然后点击Finish，接着就耐心等待Eclipse 下载安装这些模块，如下图：
+!/images/article/maven/use-maven-4.jpg!
+
+待安装完毕后，重启Eclipse，现在让我们验证一下m2eclipse 是否被正确安装了。首先，点击菜单栏中的Help，然后选择About Eclipse，在弹出的对话框中，点击Installation Details按钮，你会得到一个对话框，在Installed Software 标签栏中，检查刚才我们选择的模块是否在这个列表中，如下图：
+!/images/article/maven/use-maven-5.jpg!
+
+在eclipse 环境中，点击菜单栏中的Windows，然后选择Prefrences，在弹出的对话框中，展开左边的Maven 项，选择Installation 子项，在右边的面板中，我们能够看到有一个默认的Embedded Maven 安装被选中了，点击Add…然后选择我们的Maven 安装目录M2_HOME，添加完毕之后选择这一个外部的Maven。如下图：
+!/images/article/maven/use-maven-6.jpg!
+
+选择User Settings子项，在右边的面板中，User Settings文本框，点击Browse…按钮，选择E:\develop\apache-maven-2.1.0\conf目录，选择settings.xml文件后如下图：
+!/images/article/maven/use-maven-7.jpg!
+
+
+
