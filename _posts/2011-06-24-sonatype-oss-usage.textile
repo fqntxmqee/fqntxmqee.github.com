@@ -1,0 +1,65 @@
+---
+layout: post
+title: Sonatype OSS Maven仓库使用手册
+category: maven
+---
+
+
+# "概述":/#introduction
+# "注册用户":/#sing-up
+# "创建JIRA凭证":/#create-ticket
+# "必要的准备工作":/#prerequisites
+# "pom 配置":/#pom-config
+# "发布snapshot和release":/#deploy
+
+
+h2. <a name="introduction">概述</a>
+
+Sonatype使用 "Nexus":http://nexus.sonatype.org 为开源项目提供 "Maven仓库主机":http://oss.sonatype.org 服务，您可以通过她来发布项目的snapshot和release版本。
+
+这篇文章将逐步引导您使用 "Maven仓库主机":http://oss.sonatype.org 服务。  
+
+h2. <a name="sing-up">注册用户</a>
+
+首先您需要在 "https://issues.sonatype.org/":https://issues.sonatype.org/ 上，注册一个Sonatype JIRA帐号。
+
+# 点击Sign Up链接注册
+# 填写注册页面中的表单内容
+
+!/images/article/maven/sonatype-oss-usage_sign_up_1.jpg!
+!/images/article/maven/sonatype-oss-usage_sign_up_2.jpg!
+
+记住您的用户名，创建JIRA凭证将会用到您的用户名。
+
+h2. <a name="create-ticket">创建JIRA凭证</a>
+
+# 在浏览器中打开 "https://issues.sonatype.org/browse/OSSRH":https://issues.sonatype.org/browse/OSSRH 页面。
+# 通过下图的页面创建IRA凭证：
+
+!/images/article/maven/sonatype-oss-usage_1.jpg!
+!/images/article/maven/sonatype-oss-usage_2.jpg!
+
+h2. <a name="prerequisites">必要的准备工作</a>
+
+最好在linux系统下安装以下软件：
+
+* JDK 1.5+是否已安装;
+* 确保已安装版本控制（CVS、SVN、GIT...)系统客户端;
+* 使用Maven 2.2.1+;
+* 安装GPG（Ubuntu 已安装)，生成 "GPG签名":https://docs.sonatype.org/display/Repository/How+To+Generate+PGP+Signatures+With+Maven .
+
+我在windows下生成GPG签名后，发布public key时失败，所以建议您中linux下使用；如果您找到在windows下的使用方法，请您给我留言，或发邮件，谢谢！
+
+h2. <a name="pom-config">pom 配置</a>
+
+
+
+h2. <a name="deploy">发布snapshot和release</a>
+
+
+
+
+h2. 参考资源
+
+"Sonatype OSS Maven Repository Usage Guide":https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide 
+"How To Generate PGP Signatures With Maven":https://docs.sonatype.org/display/Repository/How+To+Generate+PGP+Signatures+With+Maven 

@@ -193,6 +193,14 @@ margin-left: auto;
 margin-right: auto;
 }
 
+.body li a {
+color: #0A67A2;
+}
+
+#blogs li a {
+color: #0A67A2;
+}
+
 /* sidebar and footer widget blocks */
 
 aside h3 {
