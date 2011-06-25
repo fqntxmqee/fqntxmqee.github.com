@@ -4,6 +4,7 @@ title: Sonatype OSS Maven仓库使用手册
 category: maven
 ---
 <script language="javascript" src="/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script language="javascript" src="/syntaxhighlighter/scripts/shBrushPowerShell.js"></script>
 
 # "概述":/#introduction
 # "注册用户":/#sing-up
@@ -388,8 +389,20 @@ SVN：
 
 h2. <a name="deploy">发布snapshot和release</a>
 
+* "发布snapshot":https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide#SonatypeOSSMavenRepositoryUsageGuide-7a.2.PublishSnapshots ：
 
+<pre name="code" class="brush: ps">
+$ mvn clean deploy -Dgpg.passphrase=yourpassphrase 
+/*yourpassphrase:gpg --gen-keys命令时设置的密码*/
+</pre>
 
+* "发布release":https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide#SonatypeOSSMavenRepositoryUsageGuide-7a.3.StageaRelease ：
+
+<pre name="code" class="brush: ps">
+$ mvn release:clean
+$ mvn release:prepare -Dgpg.passphrase=yourpassphrase
+$ mvn release:perform -Dgpg.passphrase=yourpassphrase
+</pre>
 
 h2. 参考资源
 
