@@ -17,7 +17,7 @@ desc: 为名忙，为利忙，忙里偷闲，且喝两杯闲茶去！
     <script type="text/javascript" src="/syntaxhighlighter/scripts/shCore.js"></script>
 	<script type="text/javascript" src="/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 	<link type="text/css" rel="stylesheet" href="/syntaxhighlighter/styles/shCoreDefault.css"/>
-	<script type="text/javascript">SyntaxHighlighter.all();</script>
+	
     <!--[if IE]><script src="/javascripts/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -44,7 +44,11 @@ desc: 为名忙，为利忙，忙里偷闲，且喝两杯闲茶去！
 		          {{ content }}
 		        </article>
 			</section><!-- end of #content -->
-
+			<script type="text/javascript">
+				SyntaxHighlighter.defaults['collapse'] = true;
+				SyntaxHighlighter.defaults['tab-size'] = 3;
+				SyntaxHighlighter.all();
+			</script>
 		<aside id="sidebar"><!-- sidebar -->
 				<section>
 			      <h3>关于 fqntxmqee</h3>
